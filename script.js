@@ -20,7 +20,7 @@ function updateTimer() {
         clearInterval(timerInterval);
         isRunning = false;
         startPauseButton.textContent = 'start';
-        ballElement.style.animationPlayState = 'paused';
+        ballElement.style.transform = 'scale(1)'; // Complete the fill
     }
 }
 
@@ -29,12 +29,20 @@ startPauseButton.addEventListener('click', () => {
         isRunning = true;
         startPauseButton.textContent = 'pause';
         ballElement.style.animationPlayState = 'running';
+
+        // Calculate the transition duration in seconds
+        const transitionDuration = initialTime;
+        ballElement.style.transitionDuration = `${transitionDuration}s`;
+        ballElement.style.transform = 'scale(1)'; // Begin the expansion
+
         timerInterval = setInterval(updateTimer, 1000);
     } else {
         isRunning = false;
         startPauseButton.textContent = 'start';
         ballElement.style.animationPlayState = 'paused';
         clearInterval(timerInterval);
+        ballElement.style.transitionDuration = '0s';
+        ballElement.style.transform = 'scale(0.25)'; // Reset the ball size on pause
     }
 });
 
@@ -44,7 +52,8 @@ endButton.addEventListener('click', () => {
     timer = initialTime; // Reset to initial time
     updateTimer();
     startPauseButton.textContent = 'start';
-    ballElement.style.animationPlayState = 'paused';
+    ballElement.style.transitionDuration = '0s';
+    ballElement.style.transform = 'scale(0.25)'; // Reset the ball size
 });
 
 timeInput.addEventListener('change', () => {
