@@ -41,14 +41,8 @@ body {
     color: white;
     font-size: 4vmin;
     font-weight: bold;
-    animation: bounceBall 5s cubic-bezier(0.25, 0.1, 0.25, 1) infinite paused;
-}
-
-@keyframes bounceBall {
-    0%, 100% { transform: translate(0, -30vmin); }  /* Adjusted for correct top bounce */
-    25% { transform: translate(30vmin, 0); }        /* Right bounce */
-    50% { transform: translate(0, 30vmin); }        /* Bottom bounce */
-    75% { transform: translate(-30vmin, 0); }       /* Left bounce */
+    transform: scale(0.25); /* Initial scale for start */
+    transition: transform linear; /* Transition will be set dynamically based on time */
 }
 
 #timer {
