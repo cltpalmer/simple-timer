@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0; /* Background color */
+}
+
+.container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.ball {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: #FF5733; /* Ball color */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    animation: moveBall 10s linear infinite;
+}
+
+@keyframes moveBall {
+    0% { top: 0; left: 0; }
+    25% { top: 0; left: 200px; }
+    50% { top: 200px; left: 200px; }
+    75% { top: 200px; left: 0; }
+    100% { top: 0; left: 0; }
+}
+
+#timer {
+    z-index: 10;
+}
