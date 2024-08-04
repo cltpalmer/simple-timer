@@ -45,10 +45,10 @@ body {
 }
 
 @keyframes bounceBall {
-    0%, 100% { transform: translate(0, -35vmin); }
-    25% { transform: translate(35vmin, 0); }
-    50% { transform: translate(0, 35vmin); }
-    75% { transform: translate(-35vmin, 0); }
+    0%, 100% { transform: translate(0, -30vmin); }  /* Adjusted for correct top bounce */
+    25% { transform: translate(30vmin, 0); }        /* Right bounce */
+    50% { transform: translate(0, 30vmin); }        /* Bottom bounce */
+    75% { transform: translate(-30vmin, 0); }       /* Left bounce */
 }
 
 #timer {
