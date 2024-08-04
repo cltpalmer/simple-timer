@@ -1,6 +1,7 @@
 let timer;
 let timerInterval;
 let isRunning = false;
+let initialTime = 120; // Initial time in seconds (2 minutes)
 const ballElement = document.getElementById('ball');
 const timerElement = document.getElementById('timer');
 const startPauseButton = document.getElementById('startPauseButton');
@@ -40,7 +41,7 @@ startPauseButton.addEventListener('click', () => {
 endButton.addEventListener('click', () => {
     isRunning = false;
     clearInterval(timerInterval);
-    timer = 0;
+    timer = initialTime; // Reset to initial time
     updateTimer();
     startPauseButton.textContent = 'start';
     ballElement.style.animationPlayState = 'paused';
@@ -49,7 +50,8 @@ endButton.addEventListener('click', () => {
 timeInput.addEventListener('change', () => {
     const inputMinutes = parseInt(timeInput.value, 10);
     if (inputMinutes > 0) {
-        timer = inputMinutes * 60;
+        initialTime = inputMinutes * 60; // Update initial time
+        timer = initialTime;
         updateTimer();
     }
 });
@@ -58,10 +60,10 @@ colorCircles.forEach(circle => {
     circle.addEventListener('click', () => {
         colorCircles.forEach(c => c.classList.remove('selected')); // Remove selection from all
         circle.classList.add('selected'); // Add selection to clicked
-        ballElement.style.backgroundColor = circle.getAttribute('data-color');
+        document.querySelector('.container').style.borderColor = circle.getAttribute('data-color'); // Change circle outline color
     });
 });
 
 // Initialize with default timer value
-timer = 120; // 2 minutes
+timer = initialTime;
 updateTimer();
