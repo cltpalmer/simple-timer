@@ -13,14 +13,18 @@
         </div>
     </div>
     <div class="controls">
-        <button id="startPauseButton">Start</button>
-        <button id="endButton">End</button>
+        <button id="startPauseButton">start</button>
+        <button id="endButton">end</button>
         <input type="number" id="timeInput" placeholder="Time in minutes" min="1">
-        <select id="colorSelect">
-            <option value="#FFB3BA">Pastel Pink</option>
-            <option value="#FFDFBA">Pastel Orange</option>
-            <option value="#B3E5FC">Pastel Blue</option>
-        </select>
+    </div>
+    <div class="color-bar">
+        <span>colors</span>
+        <div class="colors">
+            <div class="color-circle" data-color="#FFB3BA" style="background-color: #FFB3BA;"></div>
+            <div class="color-circle" data-color="#B3E5FC" style="background-color: #B3E5FC;"></div>
+            <div class="color-circle" data-color="#FF5733" style="background-color: #FF5733;"></div>
+            <div class="color-circle" data-color="#FDCFE8" style="background-color: #FDCFE8;"></div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
