@@ -1,4 +1,4 @@
-let startTime = 10; // Timer start in seconds
+let startTime = 120; // Timer start in seconds (2 minutes)
 let timer = startTime;
 const timerElement = document.getElementById('timer');
 
