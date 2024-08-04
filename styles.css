@@ -27,8 +27,15 @@ body {
     overflow: hidden;
 }
 
-.ball {
+.timer {
     position: absolute;
+    top: -20px; /* Positioning above the circle */
+    color: #FF5733; /* Coral/reddish color */
+    font-size: 4vmin;
+    text-transform: lowercase;
+}
+
+.ball {
     width: 20vmin;
     height: 20vmin;
     max-width: 80px;
@@ -41,12 +48,20 @@ body {
     color: white;
     font-size: 4vmin;
     font-weight: bold;
-    transform: scale(0.25); /* Initial scale for start */
-    transition: transform linear; /* Transition will be set dynamically based on time */
+    transform: scale(0.25); /* Start small */
+    animation: pulse linear infinite; /* Pulse animation */
 }
 
-#timer {
-    z-index: 10;
+@keyframes pulse {
+    0% {
+        transform: scale(0.25);
+    }
+    50% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(0.25);
+    }
 }
 
 .controls {
