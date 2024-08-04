@@ -6,7 +6,7 @@ const timerElement = document.getElementById('timer');
 const startPauseButton = document.getElementById('startPauseButton');
 const endButton = document.getElementById('endButton');
 const timeInput = document.getElementById('timeInput');
-const colorSelect = document.getElementById('colorSelect');
+const colorCircles = document.querySelectorAll('.color-circle');
 
 function updateTimer() {
     const minutes = String(Math.floor(timer / 60)).padStart(2, '0');
@@ -18,7 +18,7 @@ function updateTimer() {
     } else {
         clearInterval(timerInterval);
         isRunning = false;
-        startPauseButton.textContent = 'Start';
+        startPauseButton.textContent = 'start';
         ballElement.style.animationPlayState = 'paused';
     }
 }
@@ -26,12 +26,12 @@ function updateTimer() {
 startPauseButton.addEventListener('click', () => {
     if (!isRunning) {
         isRunning = true;
-        startPauseButton.textContent = 'Pause';
+        startPauseButton.textContent = 'pause';
         ballElement.style.animationPlayState = 'running';
         timerInterval = setInterval(updateTimer, 1000);
     } else {
         isRunning = false;
-        startPauseButton.textContent = 'Start';
+        startPauseButton.textContent = 'start';
         ballElement.style.animationPlayState = 'paused';
         clearInterval(timerInterval);
     }
@@ -42,7 +42,7 @@ endButton.addEventListener('click', () => {
     clearInterval(timerInterval);
     timer = 0;
     updateTimer();
-    startPauseButton.textContent = 'Start';
+    startPauseButton.textContent = 'start';
     ballElement.style.animationPlayState = 'paused';
 });
 
@@ -54,8 +54,12 @@ timeInput.addEventListener('change', () => {
     }
 });
 
-colorSelect.addEventListener('change', () => {
-    ballElement.style.backgroundColor = colorSelect.value;
+colorCircles.forEach(circle => {
+    circle.addEventListener('click', () => {
+        colorCircles.forEach(c => c.classList.remove('selected')); // Remove selection from all
+        circle.classList.add('selected'); // Add selection to clicked
+        ballElement.style.backgroundColor = circle.getAttribute('data-color');
+    });
 });
 
 // Initialize with default timer value
