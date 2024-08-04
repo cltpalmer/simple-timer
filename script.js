@@ -20,8 +20,6 @@ function updateTimer() {
         clearInterval(timerInterval);
         isRunning = false;
         startPauseButton.textContent = 'start';
-        ballElement.style.animationPlayState = 'paused';
-        ballElement.style.transform = 'scale(1)'; // Final state to indicate end
     }
 }
 
@@ -29,13 +27,13 @@ startPauseButton.addEventListener('click', () => {
     if (!isRunning) {
         isRunning = true;
         startPauseButton.textContent = 'pause';
-        ballElement.style.animation = `pulse ${initialTime}s linear infinite`; // Start pulsing with correct duration
+        ballElement.style.animationPlayState = 'running'; // Start the pulse
 
         timerInterval = setInterval(updateTimer, 1000);
     } else {
         isRunning = false;
         startPauseButton.textContent = 'start';
-        ballElement.style.animationPlayState = 'paused';
+        ballElement.style.animationPlayState = 'paused'; // Pause the pulse
         clearInterval(timerInterval);
     }
 });
@@ -46,8 +44,7 @@ endButton.addEventListener('click', () => {
     timer = initialTime; // Reset to initial time
     updateTimer();
     startPauseButton.textContent = 'start';
-    ballElement.style.animationPlayState = 'paused';
-    ballElement.style.transform = 'scale(0.25)'; // Reset the ball size
+    ballElement.style.animationPlayState = 'paused'; // Stop the pulse
 });
 
 timeInput.addEventListener('change', () => {
