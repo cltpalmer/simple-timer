@@ -2,6 +2,7 @@ body {
     margin: 0;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #000; /* Black background */
@@ -31,7 +32,7 @@ body {
     color: white;
     font-size: 20px;
     font-weight: bold;
-    animation: bounceBall 5s cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+    animation: bounceBall 5s cubic-bezier(0.25, 0.1, 0.25, 1) infinite paused;
 }
 
 @keyframes bounceBall {
@@ -43,4 +44,32 @@ body {
 
 #timer {
     z-index: 10;
+}
+
+.controls {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px; /* Space between buttons */
+}
+
+button, input, select {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button {
+    background-color: #333;
+    color: white;
+}
+
+input {
+    width: 150px;
+}
+
+select {
+    background-color: #f0f0f0;
+    color: #333;
 }
