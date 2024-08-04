@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400&display=swap');
+
 body {
     margin: 0;
     height: 100vh;
@@ -6,6 +8,7 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #000; /* Black background */
+    font-family: 'Raleway', sans-serif;
 }
 
 .container {
@@ -58,15 +61,27 @@ button, input, select {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-family: 'Raleway', sans-serif;
+    text-transform: lowercase;
+    transition: all 0.3s ease;
 }
 
 button {
-    background-color: #333;
-    color: white;
+    background-color: transparent;
+    color: #FF5733; /* Coral/reddish color */
+    border: 2px solid #fff; /* White border */
+    border-radius: 30px; /* Rounded button */
+    padding: 10px 20px; /* Larger padding for better appearance */
+}
+
+button:hover {
+    background-color: #FF5733; /* Coral/reddish background on hover */
+    color: white; /* White text on hover */
 }
 
 input {
     width: 150px;
+    font-size: 14px;
 }
 
 select {
