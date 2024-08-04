@@ -2,19 +2,23 @@
 
 body {
     margin: 0;
-    height: 100vh;
+    padding: 20px;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #000; /* Black background */
     font-family: 'Raleway', sans-serif;
+    box-sizing: border-box;
 }
 
 .container {
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: 80vmin;
+    height: 80vmin;
+    max-width: 300px;
+    max-height: 300px;
     border-radius: 50%;
     border: 2px solid #fff; /* White outline */
     display: flex;
@@ -25,24 +29,26 @@ body {
 
 .ball {
     position: absolute;
-    width: 80px;
-    height: 80px;
+    width: 20vmin;
+    height: 20vmin;
+    max-width: 80px;
+    max-height: 80px;
     background-color: #FF5733; /* Ball color */
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
-    font-size: 20px;
+    font-size: 4vmin;
     font-weight: bold;
     animation: bounceBall 5s cubic-bezier(0.25, 0.1, 0.25, 1) infinite paused;
 }
 
 @keyframes bounceBall {
-    0%, 100% { transform: translate(0, -110px); }
-    25% { transform: translate(110px, 0); }
-    50% { transform: translate(0, 110px); }
-    75% { transform: translate(-110px, 0); }
+    0%, 100% { transform: translate(0, -35vmin); }
+    25% { transform: translate(35vmin, 0); }
+    50% { transform: translate(0, 35vmin); }
+    75% { transform: translate(-35vmin, 0); }
 }
 
 #timer {
@@ -52,12 +58,16 @@ body {
 .controls {
     margin-top: 20px;
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 15px; /* Space between buttons */
+    width: 100%;
 }
 
 button, input {
     padding: 10px;
-    font-size: 16px;
+    font-size: 4vmin;
     border: none;
     border-radius: 30px;
     cursor: pointer;
@@ -67,6 +77,9 @@ button, input {
     color: #FF5733; /* Coral/reddish color */
     border: 2px solid #fff; /* White border */
     transition: all 0.3s ease;
+    flex: 1;
+    max-width: 120px;
+    min-width: 100px;
 }
 
 button:hover {
@@ -75,7 +88,8 @@ button:hover {
 }
 
 input {
-    width: 150px;
+    width: 100%;
+    max-width: 150px;
     font-size: 14px;
 }
 
@@ -85,26 +99,30 @@ input {
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    width: 100%;
 }
 
 .color-bar span {
     color: #FF5733; /* Coral/reddish color */
-    font-size: 20px;
+    font-size: 4vmin;
     text-transform: lowercase;
 }
 
 .colors {
     display: flex;
-    gap: 15px;
+    gap: 10px;
     padding: 10px 20px;
     background-color: transparent;
     border: 2px solid #fff;
     border-radius: 30px;
+    width: fit-content;
 }
 
 .color-circle {
-    width: 30px;
-    height: 30px;
+    width: 5vmin;
+    height: 5vmin;
+    min-width: 30px;
+    min-height: 30px;
     border-radius: 50%;
     cursor: pointer;
     transition: border 0.3s ease;
@@ -112,4 +130,35 @@ input {
 
 .color-circle.selected {
     border: 2px solid #fff; /* White border to indicate selection */
+}
+
+@media (max-width: 600px) {
+    .container {
+        width: 60vmin;
+        height: 60vmin;
+    }
+
+    .ball {
+        width: 15vmin;
+        height: 15vmin;
+        font-size: 3vmin;
+    }
+
+    .controls {
+        gap: 10px;
+    }
+
+    button, input {
+        font-size: 3vmin;
+        min-width: 80px;
+    }
+
+    .color-bar span {
+        font-size: 3vmin;
+    }
+
+    .color-circle {
+        width: 4vmin;
+        height: 4vmin;
+    }
 }
